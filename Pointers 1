@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+int main(){
+    int num=6;
+    int *p=0;
+    p=&num;
+    cout<<*p<<endl;
+    int *q=p;
+    cout<<q<<endl;
+
+ int arr[4]={1,2,3,4};
+cout<<"Address of the first element is :"<<arr<<endl;
+cout<<"Address of the first element is :"<<&arr[0]<<endl;
+int *p=0;
+p=&arr[0];
+cout<<"Address of 1st is :"<<p<<" value if 1st element is :"<<*p<<endl;
+cout<<"value:"<<*arr<<endl;
+cout<<"vlaue at 1st location "<<*(arr+1)<<endl;
+cout<<"Value added to 1 elemetn : "<<(*arr)+1<<endl;
+for(int i=0;i<4;i++){
+    cout<<*(arr+i)<<endl;
+}
+
+
+int arr[4]={1,2,3,5};
+for(int i=0;i<4;i++){
+    cout<<&arr[i]<<endl;
+}
+for(int i=0;i<4;i++){
+    cout<<(*arr+i)<<endl;
+}
+int temp[10];
+cout<<"size is: "<<sizeof(temp)<<endl;
+int *p=&temp[0];
+cout<<sizeof(*p)<<endl;;
+int a[3]={1,4,5};
+cout<<"Address of a is "<<a<<endl;
+// cout<<"Value store at 1st block is "<<*a<<endl;
+int *ptr=&a[0];
+p=&a[0];
+// cout<<ptr<<endl;
+// cout<<*ptr<<endl;
+cout<<"---> "<<&ptr<<endl;
+ char s[]= "hello";
+char * r= s;
+cout << s[0] << " " << r[0];
+    
+    int arr[4]={2,5,6,7};
+     char p[4]="adf";
+    cout<<arr<<endl;
+    cout<<p<<endl;
+    char *v=&p[0];
+    cout<<v<<endl;
+    
+    
+    
+    
+}
