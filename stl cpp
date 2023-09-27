@@ -1,0 +1,190 @@
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    /* pair <int ,int>  p ={1,0};
+    cout<<p.first<<" "<<p.second;
+    cout<<endl;
+    pair<int,pair<int,int>> Q={2,{23,4}};
+    cout<<Q.first<<" "<<Q.second.second<<" "<<Q.second.first;
+    */
+    
+   /* 
+    pair <int ,int> arr[]={{1,2},{3,45},{5,6},{32,54}};
+    for(int i=0;i<4;i++){
+        cout<<arr[i].first<<" "<<arr[i].second;
+        cout<<endl;
+    }
+    */
+    
+    /*
+    vector<int> abc;
+    abc.push_back(23);
+    abc.emplace_back(45);
+    vector<pair<int,int>> v;
+    v.push_back({1,45});
+    v.emplace_back(12,34);
+    cout<<v[0].first;
+    */
+    
+    vector<int> x={1,2,3,4,5,6,7,8,9,10,11,12,13};
+    vector<int>::iterator ptr;
+    
+   /* cout << "The vector elements are : ";
+    for (ptr = x.begin(); ptr < x.end(); ptr++)
+        cout << *ptr << " ";
+    */
+    //vector<int>::iterator ptr rather then using this statement we can use 'auto' key word to define it .
+    
+  
+  //  x.erase(x.begin()+1,x.begin()+3);
+    
+//    for (ptr = x.begin(); ptr < x.end(); ptr++)
+  //      cout << *ptr << " ";
+  // cout<<endl;cout<<endl;
+    //insert function;;
+    
+    
+    /* vector<int> as;
+    as.insert(as.begin(),5);
+    as.insert(as.begin()+1,43);
+    as.insert(as.begin()+2,3,500);
+    for(auto i:as){
+        cout<<i<<" ";
+    }
+    
+    */
+    
+    /*
+    vector<int> copy(2,100);
+    x.insert(x.begin(),copy.begin(),copy.end());
+    
+    for(auto y:x){
+        cout<<y<<" ";
+    }
+    cout<<endl;
+    cout<<x.size();
+    
+    cout<<endl;
+    // list in vectors
+    list<int> ls;
+    ls.push_back(12);
+    ls.push_front(341);
+    ls.push_back(121);
+    ls.push_front(2);
+    ls.push_front(3);
+    for(auto l:ls){
+        cout<<l<<" ";
+    }
+    
+    */
+    //stack in stl
+    //only three opreation can be perform  1] push 2]pop 3]top even it gives size() ,swapiing is also possible ;
+   /* 
+    stack<int> st;
+    st.push(23);
+    st.push(56);
+    st.push(2);
+    st.push(233);
+    st.push(50);
+    st.push(13);
+    st.push(43);
+    cout<<endl;
+    cout<<st.top();
+    st.pop();
+    cout<<endl;
+    cout<<st.top();
+    stack<int> st1; // new stack created 
+    st1.swap(st);  // using swap opertor i have just swap the st into st1
+  cout<<endl<<st1.top();  //gives topmost element;
+  
+  */
+  
+  
+  
+  
+  //queue in stl;
+ /*
+  queue<int> qe;
+  qe.push(12);
+  qe.push(19);
+  qe.push(15);
+  cout<<endl<<qe.front();
+  cout<<endl<<qe.back();
+  */
+  
+  //priority_queue in stl  as per the element it adjust it's position
+    //max heap
+  
+  /* priority_queue<int> pq;
+    pq.push(21);
+    pq.push(31);
+    pq.push(41);
+    pq.push(91);
+    cout<<pq.top();
+    */
+  
+    //set : stores everything in unique and sorted order 
+    
+    set<int> st;
+    st.insert(13);
+    st.insert(3);
+    st.insert(24);
+    st.insert(16);
+   
+   // set consist then after insertion {3,13,16,24};
+   //iterator points to the address in a container
+   int cnt =st.count(24);
+   cout<<cnt;
+   cout<<endl;
+   auto it1 =st.find(3);
+    cout<<*(it1);
+    auto it2 =st.find(24);
+    st.erase(it1,it2); // earse all element between those iterator..
+    // in set everything happens in log n complexity
+    
+   
+    
+    //multiset in stl 
+    // Store multiple occurance in the set
+    //declaration of multiset is as follow
+    multiset<int> tt;
+    tt.insert(2);  //{2}
+    tt.insert(2);  //{2,2}
+    tt.insert(2); //{2,2,2}
+    
+    //earse only one element
+    
+    tt.erase(tt.find(2));
+    
+    //unordered set
+    // it does not store in sorted order depends on you how to store element 
+    //unique 
+   // all simlar to set only
+    
+    
+    // map in stl
+    // consist majorly a key which is unique and a value assocate with that key
+    
+    map <int ,int> mp; // 1 key of int type  1 vlaue with int type
+     mp[1]=2;
+     mp.emplace({4,12});
+     mp.insert({3,45});
+     for(auto it :mp){
+         cout<<it.first<<" "<<it.second;
+     }
+
+
+    map<int,pair<int,int>> m;   //1 key of int type and 2 value of int type 
+    map <pair<int,int>,int> p;     // 2 key of int type and 1 value of int type;
+    
+    
+    
+    //multimap duplicate keys;
+    
+    
+    
+    
+    
+    
+}
