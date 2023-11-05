@@ -1,0 +1,200 @@
+#include <iostream>
+#include<map>
+using namespace std;
+class Node{
+    public:
+    int data;
+    Node* next;
+    // constructor
+    Node(int data){
+        this -> data=data;
+        this -> next = NULL;
+    }
+    ~Node(){
+        int value = this -> data;
+        if(this->next !=NULL){
+            delete next;
+            this->next=NULL;
+        }
+        cout<<"Memory is free for for node with value "<<value<<endl;
+    }
+};
+void insert_at_head(Node* &head,int d){
+  
+    //created a new node....
+    Node *temp=new Node(d);
+    temp -> next =head;
+    head=temp;
+    
+     
+}
+void insert_at_tail(Node * &tail,int d){
+  
+    //created a new node....
+    Node *temp=new Node(d);
+    tail -> next=temp;
+    tail = tail -> next;
+}
+void print_LL(Node* &head ){
+    Node* temp= head;
+    while(temp !=NULL){
+        cout<<temp-> data<<" ";
+        temp= temp-> next;
+    }
+    cout<<endl;
+    
+}
+void deleteNode(int position, Node* & head,Node*&tail) { 
+
+    //deleting first or start node
+    if(position == 1) {
+        Node* temp = head;
+        head = head -> next;
+        //memory free start ndoe
+        temp -> next = NULL;
+        delete temp;
+    }
+    else
+    {
+        //deleting any middle node or last node
+        Node* curr = head;
+        Node* prev = NULL;
+
+        int cnt = 1;
+        while(cnt < position) {
+            prev = curr;
+            curr = curr -> next;
+            cnt++;
+        }
+
+        prev -> next = curr -> next;
+        if(prev->next==NULL){
+            tail=prev;
+        }
+        curr -> next  = NULL;
+        delete curr;
+
+    }
+}
+
+
+void node_to_insert(Node* &tail,Node* &head ,int position ,int d){
+   
+    //Insert at first position....
+    if(position==1){
+        insert_at_head(head,d);
+        return;
+    }
+   
+    int cnt=1;
+    Node *temp=head;
+    while(cnt < position-1){
+        temp=temp->next;
+        cnt++;
+    }
+    
+   // Insert at last position
+    if(temp->next==NULL){
+        insert_at_tail(tail,d);
+        return ;
+    }
+   
+    Node *nodetoinsert =new Node(d);
+    nodetoinsert ->next=temp->next;
+    temp->next =nodetoinsert;
+}
+bool detect_loop(Node* &head){
+    if(head==NULL){
+        return false;
+    }
+    map<Node*,bool>visited;
+    Node *temp=head;
+    while(temp!=NULL){
+        if(visited[temp]==true){
+            cout<<"present on element :"<<temp->data<<endl;
+            return true;
+        }
+        visited[temp]=true;
+        temp=temp->next;
+    }
+    return false;
+}
+
+//to detect the cyclic or not linkedlist we use the flyod triangle.....
+Node * flyod_cycle(Node *head){
+    if(head==NULL){
+        return NULL;
+    }
+    
+    //Making 2 poointer to iterate over the cycle that is tortise and hare that is slow and fast
+    Node* slow=head;
+    Node*fast=head;
+    while(slow!=NULL && fast!=NULL){
+        fast=fast->next;
+        if(fast!=NULL){
+            fast=fast->next;
+        }
+        slow=slow->next;
+        if(slow==fast){
+            cout<<"Cycle is present at data : "<<slow->data<<endl;
+            return slow;
+        }
+    }
+    return NULL;
+}
+Node *get_starting(Node *head){
+    Node *intersection=flyod_cycle(head);
+    Node*slow=head;
+    while(slow!=intersection){
+        slow=slow->next;
+        intersection=intersection->next;
+    }
+    return slow;
+}
+void remove_loop(Node* head){
+    if(head==NULL){
+        return;
+    }
+    Node *startloop=get_starting(head);
+    Node*temp=startloop;
+    while(temp->next != startloop){
+        temp=temp->next;
+    }
+    temp->next=NULL;
+}
+int main()
+{
+    Node *node1=new Node(12);
+    Node *head=node1;
+    Node *tail=node1;
+    insert_at_tail(tail,14);
+    insert_at_tail(tail,15);
+    insert_at_tail(tail,17);
+    insert_at_tail(tail,10);
+    print_LL(head);
+    tail->next=head->next;
+    /*
+    
+    if(detect_loop(head)){
+        cout<<"Loop is present in the LInkedlist "<<endl;
+    }
+    else{
+        cout<<"Loop is absent in the linkedlist "<<endl;
+    }
+    */
+    if(flyod_cycle(head)!=NULL){
+        cout<<"Cycle is present "<<endl;
+    }
+    else{
+        cout<<"Cycle is absent "<<endl;
+    }
+    Node* point=get_starting(head);
+    cout<<"The starting of the loop is "<<point->data<<endl;
+    return 0;
+    
+    
+}
+
+//remove kreneke 5 ways in cyclic linkedlist and detect krneke 3 ways....
+
+
